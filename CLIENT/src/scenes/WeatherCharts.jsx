@@ -153,6 +153,28 @@ const WeatherCharts = ({ selectedData }) => {
         </div>
       </div>
 
+        <div className="flex items-center">
+        <div className="w-2/3">
+          <ResponsiveContainer width="100%" height={300}>
+            <h3 className="my-4 font-bold">Pressure (mb)</h3>
+            <LineChart data={pressureData}>
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis dataKey="time" />
+              <YAxis />
+              <Tooltip content={<CustomTooltip />} />
+              <Legend />
+              <Line type="monotone" dataKey="value" stroke="#ffc658" />
+            </LineChart>
+          </ResponsiveContainer>
+        </div>
+        <div className="w-1/4 ml-14">
+          <InfoCard title="Pressure" description={`[
+    Min: ${minPressure}mb - low pressure typically leads to cloudier conditions, reducing sunlight and decreasing solar efficiency.,
+    Max: ${maxPressure}mb - High pressure often brings clear skies, which boosts solar power output.
+  ]`} />
+        </div>
+      </div>
+
       <div className="flex items-center">
         <div className="w-2/3">
           <ResponsiveContainer width="100%" height={300}>
@@ -171,28 +193,6 @@ const WeatherCharts = ({ selectedData }) => {
           <InfoCard title="Humidity" description={`[
     Min: ${minHumidity}% - Low humidity levels allow more direct sunlight, improving solar panel efficiency.,
     Max: ${maxHumidity}% - High humidity can reduce solar output by increasing haze and reducing sunlight.
-  ]`} />
-        </div>
-      </div>
-
-      <div className="flex items-center">
-        <div className="w-2/3">
-          <ResponsiveContainer width="100%" height={300}>
-            <h3 className="my-4 font-bold">Pressure (mb)</h3>
-            <LineChart data={pressureData}>
-              <CartesianGrid strokeDasharray="3 3" />
-              <XAxis dataKey="time" />
-              <YAxis />
-              <Tooltip content={<CustomTooltip />} />
-              <Legend />
-              <Line type="monotone" dataKey="value" stroke="#ffc658" />
-            </LineChart>
-          </ResponsiveContainer>
-        </div>
-        <div className="w-1/4 ml-14">
-          <InfoCard title="Pressure" description={`[
-    Min: ${minPressure}mb - low pressure typically leads to cloudier conditions, reducing sunlight and decreasing solar efficiency.,
-    Max: ${maxPressure}mb - High pressure often brings clear skies, which boosts solar power output.
   ]`} />
         </div>
       </div>
